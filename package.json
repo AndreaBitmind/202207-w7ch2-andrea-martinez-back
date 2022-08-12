@@ -4,7 +4,7 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "ts": "tsc",
+    "build": "npm run tsc",
     "ts:dev": "tsc -w",
     "start": "node .",
     "start:dev": "nodemon -q",
@@ -29,5 +29,8 @@
     "ts-jest": "^28.0.7",
     "typescript": "^4.7.4",
     "husky": "^8.0.0"
+  },
+  "engines": {
+    "node": "18.4.0"
   }
 }
