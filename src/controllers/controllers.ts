@@ -6,7 +6,8 @@ import robots from "../data-provisional/data";
 const debug = Debug("my-robots:src:controllers:controllers.ts");
 
 const getRobots = (req: Request, res: Response) => {
-  res.json({ robots });
+  res.status(200).json(robots);
+
   debug(chalk.green("We have printed all robots! :)"));
 };
 

@@ -1,7 +1,7 @@
 import { Response, Request } from "express";
 import notFoundError from "./errors";
 
-describe("Given a notFoundError", () => {
+describe("Given a notFoundError middleware", () => {
   describe("When it receives a response object", () => {
     const responseTest = {
       status: jest.fn().mockReturnThis(),
