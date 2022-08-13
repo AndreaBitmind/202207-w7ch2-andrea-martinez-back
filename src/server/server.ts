@@ -1,9 +1,11 @@
+/* import "../environmentDotenv"; */
 import chalk from "chalk";
 import Debug from "debug";
 import express from "express";
 
 const app = express();
 const debug = Debug("my-robots:src:server:server.ts");
+
 const startServer = (port: number) =>
   new Promise((resolve, reject) => {
     const server = app.listen(port, () => {
