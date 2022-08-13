@@ -4,12 +4,15 @@ import Debug from "debug";
 import chalk from "chalk";
 import morgan from "morgan";
 import notFoundError from "./middlewares/errors";
+import routersRobots from "./routers/routersRobots";
 
 const debug = Debug("my-robots:files:index");
 const port = process.env.PORT ?? 4000;
 const app = express();
 
 app.use(morgan("dev"));
+
+app.use("/robots", routersRobots);
 
 app.use(notFoundError);
 
