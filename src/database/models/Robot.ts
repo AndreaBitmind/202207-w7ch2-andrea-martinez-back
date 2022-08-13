@@ -1,4 +1,4 @@
-import { Schema } from "mongoose";
+import { model, Schema } from "mongoose";
 
 const robotSchema = new Schema({
   name: {
@@ -27,4 +27,6 @@ const robotSchema = new Schema({
   },
 });
 
-export default robotSchema;
+const Robot = model("Robot", robotSchema, "robots");
+
+export default Robot;
