@@ -1,4 +1,6 @@
 import { Request, Response } from "express";
+import Robot from "../../database/models/Robot";
+
 import getRobots from "./controllers";
 
 describe("Given a getRobot controller", () => {
@@ -9,15 +11,16 @@ describe("Given a getRobot controller", () => {
     } as Partial<Response>;
     const requestTest = {} as Partial<Request>;
 
-    test("Then it should call the response method status with 200", () => {
+    test("Then it should call the response method status with 200", async () => {
       const status = 200;
 
-      getRobots(requestTest as Request, responseTest as Response);
+      Robot.find = jest.fn();
 
+      await getRobots(requestTest as Request, responseTest as Response);
       expect(responseTest.status).toHaveBeenCalledWith(status);
     });
 
-    test("Then it should call the response method json with a robot object", () => {
+    test("Then it should call the response method json with a robot object", async () => {
       const robotTest = {
         name: "manu",
         speed: 500,
@@ -25,7 +28,9 @@ describe("Given a getRobot controller", () => {
         endurance: 30,
       };
 
-      getRobots(requestTest as Request, responseTest as Response);
+      Robot.find = jest.fn().mockResolvedValue(robotTest);
+
+      await getRobots(requestTest as Request, responseTest as Response);
 
       expect(responseTest.json).toHaveBeenCalledWith(robotTest);
     });
