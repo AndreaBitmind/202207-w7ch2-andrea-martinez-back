@@ -1,23 +1,18 @@
 import "./environmentDotenv";
 import express from "express";
-import Debug from "debug";
-import chalk from "chalk";
 import morgan from "morgan";
-import notFoundError from "./middlewares/errors";
-import routersRobots from "./routers/routersRobots";
+import notFoundError from "./server/middlewares/errors";
+import routersRobots from "./server/routers/routersRobots";
+import startServer from "./server/server";
 
-const debug = Debug("my-robots:files:index");
 const port = process.env.PORT ?? 4000;
 const app = express();
 
+startServer(+port);
 app.use(morgan("dev"));
 
 app.use("/robots", routersRobots);
 
 app.use(notFoundError);
-
-app.listen(port, () => {
-  debug(chalk.yellow(`It is listening in ${port}`));
-});
 
 export default app;
