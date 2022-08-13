@@ -11,19 +11,21 @@ const robotSchema = new Schema({
     required: true,
   },
 
-  speed: {
-    type: Number,
-    required: true,
-  },
+  skills: {
+    speed: {
+      type: Number,
+      required: true,
+    },
 
-  endurance: {
-    type: Number,
-    required: true,
-  },
+    endurance: {
+      type: Number,
+      required: true,
+    },
 
-  creationDate: {
-    type: String,
-    required: true,
+    creationDate: {
+      type: String,
+      required: true,
+    },
   },
 });
 

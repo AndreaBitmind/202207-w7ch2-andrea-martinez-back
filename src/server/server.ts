@@ -3,7 +3,7 @@ import chalk from "chalk";
 import Debug from "debug";
 import express from "express";
 
-const app = express();
+export const app = express();
 const debug = Debug("my-robots:src:server:server.ts");
 
 const startServer = (port: number) =>
