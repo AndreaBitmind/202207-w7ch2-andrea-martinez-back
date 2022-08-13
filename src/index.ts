@@ -1,15 +1,23 @@
 import "./environmentDotenv";
-import express from "express";
 import morgan from "morgan";
 import notFoundError from "./server/middlewares/errors";
 import routersRobots from "./server/routers/routersRobots";
-import startServer from "./server/server";
+import startServer, { app } from "./server/server";
+import connectDB from "./database";
 
 const port = process.env.PORT ?? 4000;
-const app = express();
+const mongoURL = process.env.MONGO_URL;
 
-startServer(+port);
 app.use(morgan("dev"));
+
+(async () => {
+  try {
+    connectDB(mongoURL);
+    startServer(+port);
+  } catch (error) {
+    process.exit(1);
+  }
+})();
 
 app.use("/robots", routersRobots);
 
