@@ -1,7 +1,7 @@
 import chalk from "chalk";
 import Debug from "debug";
 import { Request, Response } from "express";
-import robots from "../data-provisional/data";
+import robots from "../../data-provisional/data";
 
 const debug = Debug("my-robots:src:controllers:controllers.ts");
 
