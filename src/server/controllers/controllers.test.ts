@@ -22,10 +22,12 @@ describe("Given a getRobot controller", () => {
 
     test("Then it should call the response method json with a robot object", async () => {
       const robotTest = {
-        name: "manu",
-        speed: 500,
-        strength: 40,
-        endurance: 30,
+        robots: {
+          endurance: 30,
+          name: "manu",
+          speed: 500,
+          strength: 40,
+        },
       };
 
       Robot.find = jest.fn().mockResolvedValue(robotTest);
