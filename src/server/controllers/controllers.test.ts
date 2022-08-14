@@ -21,20 +21,13 @@ describe("Given a getRobot controller", () => {
     });
 
     test("Then it should call the response method json with a robot object", async () => {
-      const robotTest = {
-        robots: {
-          endurance: 30,
-          name: "manu",
-          speed: 500,
-          strength: 40,
-        },
-      };
+      const robots = [{}];
 
-      Robot.find = jest.fn().mockResolvedValue(robotTest);
+      Robot.find = jest.fn().mockResolvedValue(robots);
 
       await getRobots(requestTest as Request, responseTest as Response);
 
-      expect(responseTest.json).toHaveBeenCalledWith(robotTest);
+      expect(responseTest.json).toHaveBeenCalledWith({ robots });
     });
   });
 });

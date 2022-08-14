@@ -7,7 +7,7 @@ const debug = Debug("my-robots:src:controllers:controllers.ts");
 
 const getRobots = async (req: Request, res: Response) => {
   const robots = await Robot.find();
-  res.status(200).json(robots);
+  res.status(200).json({ robots });
   debug(chalk.green("We are connected to database :)"));
 };
 
