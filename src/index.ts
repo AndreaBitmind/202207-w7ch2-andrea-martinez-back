@@ -1,3 +1,5 @@
+import cors from "cors";
+import express from "express";
 import "./environmentDotenv";
 import morgan from "morgan";
 import notFoundError from "./server/middlewares/errors";
@@ -8,6 +10,8 @@ import connectDB from "./database";
 const port = process.env.PORT ?? 4000;
 const mongoURL = process.env.MONGO_URL;
 
+app.use(cors());
+app.use(express.json());
 app.use(morgan("dev"));
 
 (async () => {
