@@ -10,10 +10,6 @@ import connectDB from "./database";
 const port = process.env.PORT ?? 4000;
 const mongoURL = process.env.MONGO_URL;
 
-app.use(cors());
-app.use(express.json());
-app.use(morgan("dev"));
-
 (async () => {
   try {
     connectDB(mongoURL);
@@ -22,6 +18,10 @@ app.use(morgan("dev"));
     process.exit(1);
   }
 })();
+
+app.use(morgan("dev"));
+app.use(cors());
+app.use(express.json());
 
 app.use("/robots", routersRobots);
 
