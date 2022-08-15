@@ -8,7 +8,7 @@ import startServer, { app } from "./server/server";
 import connectDB from "./database";
 
 const port = process.env.PORT ?? 4000;
-const mongoURL = process.env.MONGO_URL;
+const mongoURL = process.env.MONGO_URL as string;
 
 (async () => {
   try {
@@ -19,8 +19,17 @@ const mongoURL = process.env.MONGO_URL;
   }
 })();
 
+/* const cors = require("cors"); */
+
+const corsOptions = {
+  origin: "*",
+  credentials: true,
+  optionSuccessStatus: 200,
+};
+app.use(cors(corsOptions));
+
 app.use(morgan("dev"));
-app.use(cors());
+/* app.use(cors()); */
 app.use(express.json());
 
 app.use("/robots", routersRobots);
