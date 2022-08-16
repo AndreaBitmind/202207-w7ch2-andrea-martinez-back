@@ -18,7 +18,7 @@ const authentication = (
   if (!dataAuthentication || !dataAuthentication.startsWith("Bearer")) {
     const error: CustomError = CreateCustomError(
       400,
-      "Bad request",
+      "Bad request - Authentication",
       "Authentication error"
     );
 
