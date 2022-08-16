@@ -2,7 +2,7 @@ import cors from "cors";
 import express from "express";
 import "./environmentDotenv";
 import morgan from "morgan";
-import notFoundError from "./server/middlewares/errors";
+import notFoundError, { generalError } from "./server/middlewares/errors";
 import routersRobots from "./server/routers/routersRobots";
 import startServer, { app } from "./server/server";
 import connectDB from "./database";
@@ -35,5 +35,7 @@ app.use(express.json());
 app.use("/robots", routersRobots);
 
 app.use(notFoundError);
+
+app.use(generalError);
 
 export default app;
